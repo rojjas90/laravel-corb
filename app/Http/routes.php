@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('about', function () {
+//     return view('about');
+//     //return view('admin.help');
+// });
+
+Route::get('about', function () {
+  $a  = [1,2,3];
+    // return view('about',['data' => $a]);
+
+    // // arreglo asociativo
+    // return view('about',compact('a'));
+
+    //  uso de helper with
+    return view('about')->with('a', $a);
+});
