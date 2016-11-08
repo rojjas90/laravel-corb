@@ -19,3 +19,9 @@
 <?php foreach ($a as $value) {  ?>
     <li><?= $value ?></li>
   <?php } ?>
+
+  <br><br>
+
+  @foreach ($a as $item)
+      <li>{{ $item }}</li>
+    @endforeach
