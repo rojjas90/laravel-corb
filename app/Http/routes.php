@@ -23,10 +23,10 @@ Route::get('/', function () {
 //     //return view('admin.help');
 // });
 
-Route::get('{id}', function () {
+Route::get('{variable}', function ($variable) {
     // return view('about');
-    return 'hola';
-})->where('id','[0-9]+');
+    return $variable;
+})->where('variable','[0-9]+');
 
 
 Route::get('about', function () {
