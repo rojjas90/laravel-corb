@@ -49,10 +49,10 @@ Route::get('about', function () {
 Route::get('/todo','TodoController@index');
 Route::get('/todo/create','TodoController@create');
 Route::post('/todo','TodoController@store');
-Route::get('/todo/{todo}','TodoController@show');
-Route::get('/todo/{todo}/edit','TodoController@edit');
-Route::put('/todo/{todo}','TodoController@update');
-Route::delete('/todo/{todo}','TodoController@destroy');
+Route::get('/todo/{id}','TodoController@show');
+Route::get('/todo/{id}/edit','TodoController@edit');
+Route::put('/todo/{id}','TodoController@update');
+Route::delete('/todo/{id}','TodoController@destroy');
 
 
 // Routes for project controller
@@ -60,7 +60,7 @@ Route::delete('/todo/{todo}','TodoController@destroy');
 Route::get('/project','ProjectController@index');
 Route::get('/project/create','ProjectController@create');
 Route::post('/project','ProjectController@store');
-Route::get('/project/{project}','ProjectController@show');
-Route::get('/project/{project}/edit','ProjectController@edit');
-Route::put('/project/{project}','ProjectController@update');
-Route::delete('/project/{project}','ProjectController@destroy');
+Route::get('/project/{id}','ProjectController@show');
+Route::get('/project/{id}/edit','ProjectController@edit');
+Route::put('/project/{id}','ProjectController@update');
+Route::delete('/project/{id}','ProjectController@destroy');
