@@ -22,14 +22,15 @@ Route::get('/', function () {
 //     return view('about');
 //     //return view('admin.help');
 // });
-
-Route::get('{variable}', function () {
-    // return view('about');
-    // return $variable;
-
-    $r = request();
-    var_dump($r);
-})->where('variable','[0-9]+');
+//
+// Route::get('{variable}', function ($variable) {
+//     // return view('about');
+//     return $variable;
+//
+// })->where('variable','[0-9]+');
+//
+//
+Route::get('{variable}', 'TestController@variable')->where('variable','[0-9]+');
 
 
 Route::get('about', function () {
