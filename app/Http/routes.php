@@ -23,9 +23,12 @@ Route::get('/', function () {
 //     //return view('admin.help');
 // });
 
-Route::get('{variable}', function ($variable) {
+Route::get('{variable}', function () {
     // return view('about');
-    return $variable;
+    // return $variable;
+
+    $r = request();
+    var_dump($r);
 })->where('variable','[0-9]+');
 
 
