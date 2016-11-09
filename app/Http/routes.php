@@ -12,17 +12,22 @@
 */
 
 Route::get('/', function () {
+
+  $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
     // return view('welcome');
-    $lista = ['Correr por la tarde','Leer en sabado','Jugar horda 3.0','Caminar hasta la casa'];
-
-    return view('lista')->with('lista',$lista); 
-
+    return view('list-todo',compact('list'));
 });
 
 // Route::get('about', function () {
 //     return view('about');
 //     //return view('admin.help');
 // });
+
+Route::get('{id}', function () {
+    // return view('about');
+    return 'hola';
+})->where('id','[0-9]+');
+
 
 Route::get('about', function () {
   $a  = [1,2,3];
@@ -33,8 +38,4 @@ Route::get('about', function () {
 
     //  uso de helper with
     return view('about')->with('a', $a);
-});
-
-Route::get('{id}', function (){
-
 });
