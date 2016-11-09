@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    $lista = ['Correr por la tarde','Leer en sabado','Jugar horda 3.0','Caminar hasta la casa'];
+
+    return view('lista')->with('lista',$lista); 
+
 });
 
 // Route::get('about', function () {
@@ -29,4 +33,8 @@ Route::get('about', function () {
 
     //  uso de helper with
     return view('about')->with('a', $a);
+});
+
+Route::get('{id}', function (){
+
 });
