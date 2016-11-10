@@ -16,7 +16,10 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return 'Index';
+
+        $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
+          // return view('welcome');
+          return view('todo.index',compact('list'));
     }
 
     /**
@@ -26,7 +29,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todo.create');
     }
 
     /**
@@ -48,7 +51,7 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('todo.show',compact('id'));
     }
 
     /**
@@ -59,7 +62,7 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('todo.edit',compact('id')); 
     }
 
     /**
