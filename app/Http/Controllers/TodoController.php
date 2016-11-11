@@ -60,7 +60,7 @@ class TodoController extends Controller
       // $todo = Todo::where('id',$id)->first();
 
       // $todo = Todo::where('id',$id)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
-
+      // Se obtienen datos con Eloquent
       $todo = Todo::find($id);
         return view('todo.show',compact('todo'));
     }
