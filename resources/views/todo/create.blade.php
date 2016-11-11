@@ -13,15 +13,15 @@
          <form action="/todo" method="post">
            {{csrf_field()}}
               <div class="form-group">
-                      <label for="">Email address</label>
+                      <label for="">name</label>
                       <input type="text" class="form-control" id="" name="name" placeholder="name">
               </div>
               <div class="form-group">
-                      <label for="">Password</label>
+                      <label for="">color</label>
                       <input type="text" class="form-control" id="" name="color" placeholder="color">
               </div>
               <div class="form-group">
-                      <label for="">Password</label>
+                      <label for="">priority</label>
                       <input type="text" class="form-control" id="" name="priority" placeholder="priority">
               </div>
 
