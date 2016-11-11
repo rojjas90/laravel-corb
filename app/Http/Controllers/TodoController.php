@@ -57,7 +57,11 @@ class TodoController extends Controller
     {
       // DB::table('todo')->where('id',$id)->first();
       //   return view('todo.show',compact('id'));
-      $todo = Todo::where('id',$id)->first();
+      // $todo = Todo::where('id',$id)->first();
+
+      // $todo = Todo::where('id',$id)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
+
+      $todo = Todo::find($id);
         return view('todo.show',compact('todo'));
     }
 
