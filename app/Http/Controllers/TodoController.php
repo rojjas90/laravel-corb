@@ -91,9 +91,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Todo $id)
     {
-      Todo::find($id);
+      // Todo::find($id);
       // return $id;
         return view('todo.edit',compact('id'));
         // return view('todo.edit',);
