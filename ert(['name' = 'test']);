@@ -1,0 +1,65 @@
+[33mcommit e096093e5752d2315df12ebfa0be1a850294c325[m
+Author: Rojas <sajor90@gmail.com>
+Date:   Thu Nov 10 19:44:15 2016 -0600
+
+    Se crearon modelos y migradores con el comando
+    >  php artisan make:model Models/Todo -m
+    donde
+    Models  es la carpeta
+    Todo es el modelo
+    -m crea automaticamente el migrador
+
+ create mode 100644 app/Models/Project.php
+ create mode 100644 app/Models/Todo.php
+ rename database/migrations/{2016_11_10_023046_todo_migrate.php => 2016_11_11_013027_create_todos_table.php} (73%)
+ create mode 100644 database/migrations/2016_11_11_013036_create_projects_table.php
+
+[33mcommit 33b841702600cda185a772a9e9d8b9c5d5d77101[m
+Author: Rojas <sajor90@gmail.com>
+Date:   Wed Nov 9 21:51:07 2016 -0600
+
+    Se recuperaron los datos de la db, y se mostraron en la vista, se modifico el elemento de la vista por que los datos son devueltos como objetos
+
+
+[33mcommit 445742790bc0a6616fc2ad46552e388cda7f41e9[m
+Author: Rojas <sajor90@gmail.com>
+Date:   Wed Nov 9 21:30:33 2016 -0600
+
+    Se generaron archivos de migracion: adding_prority... para actualizar la tabla con el comando
+    >  php artisan make:migration adding_prority_todo_migrate --table todo
+    
+    comando para entrar a la consola de tinker
+    > php artisan tinker
+    
+    //insert
+    >>> DB::table('todo')->insert(['name' => 'test']);
+    
+    //select
+    >>> DB::table('todo')->insert(['name' => 'tarea']);
+    
+    //top
+    >>> DB::table('todo')->first();
+
+ delete mode 100644 database/migrations/2016_11_10_024438_adding_priority_todo_migrate.php
+ create mode 100644 database/migrations/2016_11_10_025921_adding_prority_todo_migrate.php
+
+[33mcommit 567acf641a234b945bed0e8f2c6d9884ce83fd91[m
+Author: Rojas <sajor90@gmail.com>
+Date:   Wed Nov 9 20:48:22 2016 -0600
+
+    SE configuro el archivo .env, con los datos de acceso a la db, e crearon archivos de migracion Database/migrations/ ... con comando >  php artisan make:migration nombre_del_archivo --create todo,
+    para generar la tabla en la db: > php artisan migrate
+
+ create mode 100644 database/migrations/2016_11_10_023046_todo_migrate.php
+ create mode 100644 database/migrations/2016_11_10_024438_adding_priority_todo_migrate.php
+
+[33mcommit 6b5b90b3d6539b34c6d437a43bbb43949f56e588[m
+Author: Rojas <sajor90@gmail.com>
+Date:   Wed Nov 9 19:31:50 2016 -0600
+
+    Se crearon las vistas del crud
+
+ create mode 100644 resources/views/todo/create.blade.php
+ create mode 100644 resources/views/todo/edit.blade.php
+ create mode 100644 resources/views/todo/index.blade.php
+ create mode 100644 resources/views/todo/show.blade.php

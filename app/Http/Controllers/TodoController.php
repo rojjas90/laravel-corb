@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\Todo;
 
 class TodoController extends Controller
 {
@@ -18,9 +19,9 @@ class TodoController extends Controller
     public function index()
     {
 
-        // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
-        $list = DB::table('todo')->get();
-
+        // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
+        // $list = DB::table('todo')->get();
+        $list = Todo::all();
           // return view('welcome');
           return view('todo.index',compact('list'));
     }
