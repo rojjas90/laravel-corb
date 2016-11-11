@@ -72,4 +72,4 @@ Route::delete('/project/{id}','ProjectController@destroy')->where('id','[0-9]+')
 
 
 // Ligado de rutas con los modelos
-Route::model('id','\App\Models\Project');
+// Route::model('id','\App\Models\Project');

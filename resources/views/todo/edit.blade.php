@@ -8,15 +8,27 @@
     <title>Crear todos</title>
   </head>
   <body>
+
 <div class="container">
     <div class="bs-example" data-example-id="basic-forms">
-         <form>
-              <div class="form-group"> <label for="exampleInputEmail1">Email address</label> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div>
-              <div class="form-group"> <label for="exampleInputPassword1">Password</label> <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> </div>
-              <div class="form-group"> <label for="exampleInputFile">File input</label> <input type="file" id="exampleInputFile">
-                   <p class="help-block">Example block-level help text here.</p>
+         <form action="/todo" method="post">
+           {{csrf_field()}}
+              <div class="form-group">
+                      <label for="">name</label>
+                      <input type="text" class="form-control" id="" name="name" placeholder="name" value={{$id->name}}>
               </div>
-              <div class="checkbox"> <label> <input type="checkbox"> Check me out </label> </div> <button type="submit" class="btn btn-default">Submit</button> </form>
+              <div class="form-group">
+                      <label for="">color</label>
+                      <input type="text" class="form-control" id="" name="color" placeholder="color" value={{$id->color}}>
+              </div>
+              <div class="form-group">
+                      <label for="">priority</label>
+                      <input type="text" class="form-control" id="" name="priority" placeholder="priority" value={{$id->priority}}>
+              </div>
+
+
+               <button type="submit" class="btn btn-default">Submit</button>
+             </form>
     </div>
     </div>
   </body>

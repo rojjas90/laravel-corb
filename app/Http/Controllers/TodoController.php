@@ -59,7 +59,10 @@ class TodoController extends Controller
         Todo::create($request->all());
 
         // return view('todo.index');
-        return $this->index();
+
+        // return $this->index(); //or return redirect('todo');
+
+        return redirect('todo');
     }
 
     /**
@@ -90,7 +93,11 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
+      Todo::find($id);
+      // return $id;
         return view('todo.edit',compact('id'));
+        // return view('todo.edit',);
+
     }
 
     /**
