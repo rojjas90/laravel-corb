@@ -54,6 +54,9 @@ Route::get('/todo/{id}/edit','TodoController@edit')->where('id','[0-9]+');
 Route::put('/todo/{id}','TodoController@update')->where('id','[0-9]+');
 Route::delete('/todo/{id}','TodoController@destroy')->where('id','[0-9]+');
 
+// Ligado de rutas con los modelos
+Route::model('id', 'App\Models\Todo');
+
 // //parametros opcionales, se usa ? p.e.
 // Route::get('/todo/{id?}','TodoController@show');
 
@@ -66,3 +69,7 @@ Route::get('/project/{id}','ProjectController@show')->where('id','[0-9]+');
 Route::get('/project/{id}/edit','ProjectController@edit')->where('id','[0-9]+');
 Route::put('/project/{id}','ProjectController@update')->where('id','[0-9]+');
 Route::delete('/project/{id}','ProjectController@destroy')->where('id','[0-9]+');
+
+
+// Ligado de rutas con los modelos
+Route::model('id','\App\Models\Project');

@@ -53,6 +53,7 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function show(Todo $id)
     public function show($id)
     {
       // DB::table('todo')->where('id',$id)->first();
@@ -62,6 +63,7 @@ class TodoController extends Controller
       // $todo = Todo::where('id',$id)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
       // Se obtienen datos con Eloquent
       $todo = Todo::find($id);
+      // return $id;
         return view('todo.show',compact('todo'));
     }
 
