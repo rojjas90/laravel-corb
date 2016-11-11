@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TodoMigrate extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class TodoMigrate extends Migration
      */
     public function up()
     {
-        Schema::create('todo', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-$table->timestamps();
-$table->string('name');
-$table->string('color')->default('red');  // modificadores ->default()
+        Schema::create('projects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +25,6 @@ $table->string('color')->default('red');  // modificadores ->default()
      */
     public function down()
     {
-        Schema::drop('todo');
+        Schema::drop('projects');
     }
 }

@@ -12,7 +12,7 @@ class AddingProrityTodoMigrate extends Migration
      */
     public function up()
     {
-        Schema::table('todo', function (Blueprint $table) {
+        Schema::table('todos', function (Blueprint $table) {
             // // $table->renameColumn('color','label');
             // $table->string('color')->after('name')->change();
             // $table->enum('priority',['a','b','c']);
@@ -27,7 +27,7 @@ class AddingProrityTodoMigrate extends Migration
      */
     public function down()
     {
-        Schema::table('todo', function (Blueprint $table) {
+        Schema::table('todos', function (Blueprint $table) {
             // // $table->renameColumn('color','label');
             // $table->string('color')->after('description')->change();
             $table->dropColumn('priority');

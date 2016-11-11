@@ -9,6 +9,9 @@
   </head>
   <body>
 <div class="container">
+
+<!-- <h1>{{$todo->name}}</h1> -->
+
     <div class="bs-example" data-example-id="basic-forms">
          <form>
               <div class="form-group"> <label for="exampleInputEmail1">Email address</label> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div>

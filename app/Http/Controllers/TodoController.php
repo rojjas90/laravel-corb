@@ -54,7 +54,9 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        return view('todo.show',compact('id'));
+      // DB::table('todo')->where('id',$id)->first();
+      //   return view('todo.show',compact('id'));
+        return view('todo.show');
     }
 
     /**
