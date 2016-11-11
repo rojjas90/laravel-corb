@@ -44,16 +44,19 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        // return $request->priority;
-        $data = new Todo;
-        $data->name = $request->name;
-        $data->color = $request->color;
-        $data->priority = $request->priority;
+        // // return $request;
+        // // return $request->priority;
+        // $data = new Todo;
+        // $data->name = $request->name;
+        // $data->color = $request->color;
+        // $data->priority = $request->priority;
+        //
+        // // return $data;
+        //
+        // $data->save();
 
-        // return $data;
-
-        $data->save();
+        // Todo::create([$request->name, .....])
+        Todo::create($request->all());
 
         // return view('todo.index');
         return $this->index();
