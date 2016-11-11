@@ -10,7 +10,7 @@
   <body>
 <div class="container">
 
-<!-- <h1>{{$todo->name}}</h1> -->
+<h1>{{$todo->name}}</h1>
 
     <div class="bs-example" data-example-id="basic-forms">
          <form>
