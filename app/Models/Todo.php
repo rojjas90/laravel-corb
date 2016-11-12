@@ -8,11 +8,16 @@ class Todo extends Model
 {
 
  //Indica al orm con que campos hacer el match al recuperar los datos del $request
-protected $fillable = ['name','color','priority'];
+protected $fillable = ['name','color','priority','user_id','project_id'];
 
 public function user()
 {
   return $this->belongsTo('App\Models\User');
+}
+
+public function project()
+{
+  return $this->belongsTo('App\Models\Project');
 }
 
 }

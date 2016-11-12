@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Todo;
+use App\Models\Project;
 
 class TodoController extends Controller
 {
@@ -22,6 +23,7 @@ class TodoController extends Controller
         // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
         // $list = DB::table('todo')->get();
         $list = Todo::all()->load('user');
+        // return $list;
           // return view('welcome');
           return view('todo.index',compact('list'));
     }
@@ -33,7 +35,9 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todo.create');
+      $projects = Project::all();
+// return $projects;
+        return view('todo.create',compact('projects'));
     }
 
     /**
@@ -55,8 +59,13 @@ class TodoController extends Controller
         //
         // $data->save();
 
+// return $request;
         // Todo::create([$request->name, .....])
-        Todo::create($request->all());
+
+$data = $request->all();
+$data['user_id'] =1;
+// return $data;
+Todo::create($data);
 
         // return view('todo.index');
 

@@ -15,6 +15,22 @@
                       <label for="">priority</label>
                       <input type="text" class="form-control" id="" name="priority" placeholder="priority">
               </div>
+              </div>
+              <div class="form-group">
+                      <label for="">Select a project</label>
+
+  <select class="form-control" name="project_id" id="id">
+
+@foreach($projects as $project)
+<option value="{{$project->id}}">{{$project->name}}</option>
+@endforeach
+</select>
+
+
+
+
+
+              </div>
 
 
                <button type="submit" class="btn btn-default">Submit</button>

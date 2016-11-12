@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserToTodo extends Migration
+class AddProjectToTodo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUserToTodo extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            // $table->integer('user_id')->unsigned()->index()->default(1);
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('project_id')->unsigned()->index();
+            $table->foreign('project_id')->refereces('id')->on('projects');
         });
     }
 
@@ -26,8 +26,8 @@ class AddUserToTodo extends Migration
     public function down()
     {
         Schema::table('todos', function (Blueprint $table) {
-            // $table->dropForeign('todo_user_id_foreign');
-            // $table->dropColumn('user_id');
+            $table->dropForeign('todos_projects_id_foreign');
+            $table->dropColumn('project_id');
         });
     }
 }
