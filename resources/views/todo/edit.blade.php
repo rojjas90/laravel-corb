@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Crear todos</title>
-  </head>
-  <body>
-
-<div class="container">
+@extends('shared._layout')
+@section('content')
     <div class="bs-example" data-example-id="basic-forms">
          <form action="/todo/{{$todo->id}}" method="post">
            {{csrf_field()}}
@@ -31,6 +21,4 @@
                <button type="submit" class="btn btn-default">Submit</button>
              </form>
     </div>
-    </div>
-  </body>
-</html>
+@stop

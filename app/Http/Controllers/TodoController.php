@@ -72,7 +72,7 @@ class TodoController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function show(Todo $todo)
-    public function show($todo)
+    public function show(Todo $todo)
     {
       // DB::table('todo')->where('id',$todo)->first();
       //   return view('todo.show',compact('id'));
@@ -80,7 +80,7 @@ class TodoController extends Controller
 
       // $todo = Todo::where('id',$todo)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
       // Se obtienen datos con Eloquent
-      $todo = Todo::find($todo);
+      // $todo = Todo::find($todo);
       // return $todo;
         return view('todo.show',compact('todo'));
     }
@@ -109,6 +109,7 @@ class TodoController extends Controller
      */
     public function update(Request $request,Todo $todo)
     {
+      return $todo;
       // return $request;
       return Todo::create($request->all());
         // $todo->name = $request->name;
