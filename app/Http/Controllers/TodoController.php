@@ -68,34 +68,34 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $todo
      * @return \Illuminate\Http\Response
      */
-    // public function show(Todo $id)
-    public function show($id)
+    // public function show(Todo $todo)
+    public function show($todo)
     {
-      // DB::table('todo')->where('id',$id)->first();
+      // DB::table('todo')->where('id',$todo)->first();
       //   return view('todo.show',compact('id'));
-      // $todo = Todo::where('id',$id)->first();
+      // $todo = Todo::where('id',$todo)->first();
 
-      // $todo = Todo::where('id',$id)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
+      // $todo = Todo::where('id',$todo)->get(); // recupera un arreglo con un solo objeto, hace falta recuperar el objeto del arreglo
       // Se obtienen datos con Eloquent
-      $todo = Todo::find($id);
-      // return $id;
+      $todo = Todo::find($todo);
+      // return $todo;
         return view('todo.show',compact('todo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $todo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Todo $id)
+    public function edit(Todo $todo)
     {
-      // Todo::find($id);
-      // return $id;
-        return view('todo.edit',compact('id'));
+      // Todo::find($todo);
+      // return $todo;
+        return view('todo.edit',compact('todo'));
         // return view('todo.edit',);
 
     }
@@ -104,21 +104,23 @@ class TodoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Todo $todo)
     {
-        //
+      // return $request;
+      return Todo::create($request->all());
+        // $todo->name = $request->name;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($todo)
     {
         //
     }
