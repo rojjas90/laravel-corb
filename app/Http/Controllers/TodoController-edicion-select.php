@@ -102,15 +102,31 @@ Todo::create($data);
      */
     public function edit(Todo $todo)
     {
-      $project = Project::find($todo->project_id);
+      $projects = Project::all();
+      // return $projects;
+      $datos = array();
+array_push($datos, $todo,$projects);
+// return compact('datos');
+// return var_dump($datos[1]);
+        return view('todo.edit',compact('datos'));
 
 
-      // return $project;
+
       // Todo::find($todo);
       // return $todo;
         return view('todo.edit',compact('todo'));
         // return view('todo.edit',);
 
+
+                // // return $todo;
+                //         $projects = Project::all();
+                //
+                // // return $projects;
+                //
+                //         $data = array();
+                //         array_push($data, $todo,$projects);
+                //
+                // return $data;
     }
 
     /**
@@ -122,7 +138,7 @@ Todo::create($data);
      */
     public function update(Request $request,Todo $todo)
     {
-      return $todo;
+      // return $todo;
       // return $request;
       return Todo::create($request->all());
         // $todo->name = $request->name;
