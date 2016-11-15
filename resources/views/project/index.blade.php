@@ -18,8 +18,16 @@
       <div class="starter-template">
 
         <ul class="list-group">
-              @forelse ($projects as $item)
-                  <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} </li>
+              @forelse ($projects as $project)
+                  <li class="list-group-item"> <span class="badge">14</span> {{$project->name}}
+                    <ul>
+                    @forelse ($project->todos as $todo)
+                      <li class="list-group-item">{{$todo->name}} | {{$todo->user->name}}</li>
+                    @empty
+                      No hay tareas
+                    @endforelse
+                    </ul>
+                  </li>
               @empty
                   <p>No hay projectos</p>
               @endforelse

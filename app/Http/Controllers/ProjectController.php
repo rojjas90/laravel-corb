@@ -19,6 +19,10 @@ class ProjectController extends Controller
       $projects = Project::all();
       // return $projects; or dd($projects)
         // return 'Index de project';
+
+        $projects->load('todos.user');
+
+        // return $projects;
         return view('project.index',compact('projects'));
     }
 

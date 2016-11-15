@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+// use App\Models\Todo;
 
 class Project extends Model
 {
 
 protected $fillable = ['name'];
 
-    // public function projects()
-    // {
-    //   return $this->hasMany(App\Models\Project);
-    // }
+    public function todos()
+    {
+      return $this->hasMany('App\Models\Todo');
+    }
 }
