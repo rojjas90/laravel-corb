@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -22,6 +23,11 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+// redireccion cuando se autentica el usuario
+protected $redirectPath = '/todo';
+// redireccion cuando no esta logueado el usuario
+protected $loginPath = '/login';
 
     /**
      * Create a new authentication controller instance.

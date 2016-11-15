@@ -73,3 +73,11 @@ Route::delete('/project/{project}','ProjectController@destroy')->where('id','[0-
 
 // Ligado de rutas con los modelos
 Route::model('project','\App\Models\Project');
+
+//Authentication Routes
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//Register routes
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
