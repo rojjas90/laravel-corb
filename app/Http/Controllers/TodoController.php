@@ -65,8 +65,16 @@ class TodoController extends Controller
 // return $request;
         // Todo::create([$request->name, .....])
 
+// se valida el formulario
+$this->validate($request, [
+        'name' => 'required|alpha_num|max:10|unique:todos', // por default toma el del name si no se defina el campo de la tabla
+        'priority' => 'required'
+    ]);
+
+
+
 $data = $request->all();
-$data['user_id'] =1;
+$data['user_id'] =Auth::user()->id;
 // return $data;
 Todo::create($data);
 

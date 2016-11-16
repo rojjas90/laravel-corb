@@ -53,10 +53,20 @@ Route::group([
 {
 Route::get('','TodoController@index');
 Route::get('/create','TodoController@create');
-Route::post('','TodoController@store');
+// Route::post('','TodoController@store');
+Route::post('',
+[
+  'middleware' => 'App\Http\Middleware\Validation',
+  'uses' => 'TodoController@store'
+]);
 Route::get('/{todo}','TodoController@show')->where('id','[0-9]+');
 Route::get('/{todo}/edit','TodoController@edit')->where('id','[0-9]+');
-Route::put('/{todo}','TodoController@update')->where('id','[0-9]+');
+// Route::put('/{todo}','TodoController@update')->where('id','[0-9]+');
+Route::put('/{todo}',
+[
+  'middleware' => 'App\Http\Middleware\Validation',
+  'uses' => 'TodoController@update'
+]);
 Route::delete('/{todo}','TodoController@destroy')->where('id','[0-9]+');
 // Ligado de rutas con los modelos
 Route::model('todo', 'App\Models\Todo');
