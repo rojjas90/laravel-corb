@@ -1,5 +1,13 @@
 @extends('shared._layout')
 @section('content')
+@if (session()->has('logout_msg'))
+  <div class="">
+    Se cerró tu sesión correctamente
+    <br>
+    {{session()->get('logout_msg')}}
+  </div>
+@endif
+
 <form method="POST" action="/auth/login">
     {!! csrf_field() !!}
 
