@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -27,7 +27,9 @@ class AuthController extends Controller
 // redireccion cuando se autentica el usuario
 protected $redirectPath = '/todo';
 // redireccion cuando no esta logueado el usuario
-protected $loginPath = '/login';
+protected $loginPath = '/auth/login';
+// redireccion cuando no esta logueado el usuario
+protected $redirectAfterLogout = '/auth/login';
 
     /**
      * Create a new authentication controller instance.

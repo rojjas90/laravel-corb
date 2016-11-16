@@ -8,6 +8,11 @@
     <title>Layout</title>
   </head>
   <body>
+    <header>
+      @if (Auth::check())
+        Bienvenido {{Auth::user()->name}} | <a href="/auth/logout">Salir</a>        
+      @endif
+    </header>
     <div class="container">
 
           <div class="jumbotron">

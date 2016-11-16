@@ -13,7 +13,7 @@ protected $fillable = ['description','name','color','priority','user_id','projec
 public function user()
 {
   return $this->belongsTo('App\Models\User');
-} 
+}
 
 public function project()
 {

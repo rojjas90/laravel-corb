@@ -46,16 +46,23 @@ Route::get('about', function () {
 
 // Routes for todo controller
 
-Route::get('/todo','TodoController@index');
-Route::get('/todo/create','TodoController@create');
-Route::post('/todo','TodoController@store');
-Route::get('/todo/{todo}','TodoController@show')->where('id','[0-9]+');
-Route::get('/todo/{todo}/edit','TodoController@edit')->where('id','[0-9]+');
-Route::put('/todo/{todo}','TodoController@update')->where('id','[0-9]+');
-Route::delete('/todo/{todo}','TodoController@destroy')->where('id','[0-9]+');
-
+Route::group([
+  'middleware' => 'auth',
+  'prefix' => 'todo'
+],function ()
+{
+Route::get('','TodoController@index');
+Route::get('/create','TodoController@create');
+Route::post('','TodoController@store');
+Route::get('/{todo}','TodoController@show')->where('id','[0-9]+');
+Route::get('/{todo}/edit','TodoController@edit')->where('id','[0-9]+');
+Route::put('/{todo}','TodoController@update')->where('id','[0-9]+');
+Route::delete('/{todo}','TodoController@destroy')->where('id','[0-9]+');
 // Ligado de rutas con los modelos
 Route::model('todo', 'App\Models\Todo');
+}
+);
+
 
 // //parametros opcionales, se usa ? p.e.
 // Route::get('/todo/{id?}','TodoController@show');
