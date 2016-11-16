@@ -25,11 +25,11 @@
               </div>
               <div class="form-group">
                       <label for="">Color</label>
-                      <input type="text" class="form-control" id="" name="color" placeholder="color">
+                      <input type="text" class="form-control" id="" name="color" placeholder="color" value="{{old('color')}}">
               </div>
               <div class="form-group">
                       <label for="">Priority</label>
-                      <input type="text" class="form-control" id="" name="priority" placeholder="priority">
+                      <input type="text" class="form-control" id="" name="priority" placeholder="priority" value="{{old('priority')}}">
               </div>
               <div class="form-group">
                       <label for="">Select a project</label>

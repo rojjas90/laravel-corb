@@ -65,11 +65,20 @@ class TodoController extends Controller
 // return $request;
         // Todo::create([$request->name, .....])
 
+$messages = [
+  // 'max' => 'Máximo 10'
+  'name.required' => 'El campo name es necesario',
+  'priority.required' => 'El campo priority es necesario'
+
+  // o
+  // 'required' => 'Los campos son necesarios'
+];
+
 // se valida el formulario
 $this->validate($request, [
         'name' => 'required|alpha_num|max:10|unique:todos', // por default toma el del name si no se defina el campo de la tabla
         'priority' => 'required'
-    ]);
+    ],$messages);
 
 
 
