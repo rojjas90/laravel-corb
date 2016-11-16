@@ -10,7 +10,7 @@
   <body>
     <header>
       @if (Auth::check())
-        Bienvenido {{Auth::user()->name}} | <a href="/auth/logout">Salir</a>        
+        Bienvenido {{Auth::user()->name}} | <a href="/auth/logout">Salir</a>
       @endif
     </header>
     <div class="container">
@@ -39,6 +39,8 @@
                             <p>© 2016 Company, Inc. · <!-- <a href="#">Privacy</a> · <a href="#">Terms</a> --></p>
                           </footer>
 
+                          <!-- Latest compiled and minified JavaScript -->
+                          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript">
 @yield('scripts')
 </script>

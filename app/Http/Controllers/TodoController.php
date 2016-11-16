@@ -22,7 +22,7 @@ class TodoController extends Controller
     {
       // return Auth::user();
       // dd( Auth::check());
-      
+
         // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
         // $list = DB::table('todo')->get();
         $list = Todo::all()->load('user');
@@ -72,8 +72,19 @@ Todo::create($data);
 
         // return view('todo.index');
 
+
         // return $this->index(); //or return redirect('todo');
 
+// dd(session()->all());
+
+// se define el mensaje flash de que se creo
+// session()->flash('logout_msg','Sesion terminada');
+session()->flash("flash_msg","Se creó la tarea data['name']");
+session()->flash('flash_type','info');
+
+
+
+// se redifije a la lista de todo's
         return redirect('todo');
     }
 
