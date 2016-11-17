@@ -12,7 +12,7 @@
   @endif
 
   {{-- // se recupera el valor en la variable de session --}}
-  {{session()->get('parametro')}}
+  {{-- {{session()->get('parametro')}} --}}
 
 
         <ul class="list-group">
