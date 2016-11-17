@@ -42,7 +42,12 @@ class TodoController extends Controller
      */
     public function create()
     {
+      // $collaborators = Todo::all();
+
       $projects = Project::all();
+
+// $todo->load('user','collaborators');
+
 // return $projects;
         return view('todo.create',compact('projects'));
     }
@@ -87,10 +92,24 @@ class TodoController extends Controller
 
 
 $data = $request->all();
-$data['user_id'] =Auth::user()->id;
+// $data['user_id'] =Auth::user()->id;
 // return $data;
-Todo::create($data);
 
+//asignando el creador pero como parte de la relacion
+$todo = Todo::create($data);
+
+//attach guarda los valores en las relaciones (tablas intermedias) 
+
+//asignando al creador como colaborador
+$todo->user()->attach(Auth::user()->id);
+
+$todo->collaborators()->attach(Auth::user()->id,['assigned_at'=>'2016-11-16','allow'=>2]);
+// o
+//guarda la relacion
+$todo->collaborators()->saveMany(Auth::user());
+
+// //asignando a un grupo de colaboradores
+// $todo->collaborators()->attach($request->collaborators);
         // return view('todo.index');
 
 
