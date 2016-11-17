@@ -11,6 +11,10 @@
     </div>
   @endif
 
+  {{-- // se recupera el valor en la variable de session --}}
+  {{session()->get('parametro')}}
+
+
         <ul class="list-group">
 
           @foreach ($list as $item)

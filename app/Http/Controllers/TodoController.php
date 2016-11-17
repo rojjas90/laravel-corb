@@ -24,6 +24,9 @@ class TodoController extends Controller
       // return Auth::user();
       // dd( Auth::check());
 
+// se coloca un valor en la variable de session
+session()->put('parametro','valor');
+
         // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
         // $list = DB::table('todo')->get();
         $list = Todo::all()->load('user');
