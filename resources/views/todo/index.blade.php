@@ -15,6 +15,11 @@
 
           @foreach ($list as $item)
               <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} -- {{$item->user->name}} </li>
+              <form class="" action="/todo/{{$item->id}}" method="post">
+                {{method_field('DELETE')}}
+                {{csrf_field()}}
+                <button type="submit" name="button">Eliminar</button>
+              </form>
           @endforeach
 
 @stop

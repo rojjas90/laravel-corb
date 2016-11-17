@@ -67,7 +67,13 @@ Route::put('/{todo}',
   'middleware' => 'App\Http\Middleware\Validation',
   'uses' => 'TodoController@update'
 ]);
-Route::delete('/{todo}','TodoController@destroy')->where('id','[0-9]+');
+// Route::delete('/{todo}','TodoController@destroy')->where('id','[0-9]+');
+Route::delete('/{todo}',
+[
+  'middleware' => 'App\Http\Middleware\Validation',
+  'uses'=> 'TodoController@destroy'
+]);
+
 // Ligado de rutas con los modelos
 Route::model('todo', 'App\Models\Todo');
 }

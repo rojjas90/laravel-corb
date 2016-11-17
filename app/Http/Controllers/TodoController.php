@@ -168,6 +168,10 @@ session()->flash('flash_type','info');
      */
     public function destroy($todo)
     {
-        //
+
+Todo::destroy($todo);
+
+      // se redifije a la lista de todo's
+              return redirect('todo');
     }
 }
