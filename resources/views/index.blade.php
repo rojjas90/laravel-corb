@@ -11,7 +11,7 @@
 <ul>
     @foreach ($user->collaboratingTodos as $todo)
       <li>
-        {{$todo->name}}
+        {{$todo->name}} | {{$todo->pivot->assigned_at}}
       </li>
     @endforeach
 </ul>

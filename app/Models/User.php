@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function collaboratingTodos()
     {
-      return $this->belongsToMany('App\Models\Todo');
+      return $this->belongsToMany('App\Models\Todo')->withPivot('assigned_at','allow');
     }
 
     public function ownerTodo()
