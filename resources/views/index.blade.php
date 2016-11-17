@@ -1,3 +1,6 @@
+@extends('shared._layout')
+@section('content')
+
 <h1>Tareas propias</h1>
 <ul>
   @foreach ($user->ownerTodo as $todo)
@@ -15,3 +18,5 @@
       </li>
     @endforeach
 </ul>
+
+@stop

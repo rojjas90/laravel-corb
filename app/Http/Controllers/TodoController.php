@@ -126,6 +126,10 @@ session()->flash('flash_type','info');
       // Se obtienen datos con Eloquent
       // $todo = Todo::find($todo);
       // return $todo;
+
+      $todo->load('user','collaborators');
+// return $todo;
+
         return view('todo.show',compact('todo'));
     }
 

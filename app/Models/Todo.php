@@ -22,6 +22,6 @@ public function project()
 
 public function collaborators()
 {
-  return $this->belongsToMany('App\Models\User');
+  return $this->belongsToMany('App\Models\User')->withPivot('assigned_at','allow');
 }
 }

@@ -1,6 +1,7 @@
 @extends('shared._layout')
 @section('content')
-<h1>Detalles de: {{$todo->name}}</h1>
+<h1>Esta es la tarea: {{$todo->name}}</h1>
+<h3>Creado por: <small>{{$todo->user->name}}</small> </h3>
 <br>
 <div class="bs-example" data-example-id="basic-forms">
            <div class="form-group">
@@ -23,6 +24,15 @@
                   <label for="">Priority</label>
                   <input type="text" class="form-control" id="" name="priority" placeholder="priority" value="{{$todo->priority}}">
           </div>
+
+<h3>Usuarios asignados</h3>
+          <ul>
+            @foreach ($todo->collaborators as $collaborator)
+              <li>
+                {{$collaborator->name}} | {{$collaborator->pivot->assigned_at}}
+              </li>
+            @endforeach
+          </ul>
 </div>
 
 @stop

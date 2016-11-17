@@ -21,6 +21,6 @@ class DashboardController extends Controller
 
     $user->load('collaboratingTodos','ownerTodo');
 
-        return view('index',compact('user'));
+    return view('index',compact('user'));
   }
 }
