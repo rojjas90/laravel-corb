@@ -104,3 +104,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 //Register routes
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// crear la ruta del controlador
+Route::get('',
+[
+  'middleware' => 'auth',
+  'uses' => 'DashboardController@index'
+]);

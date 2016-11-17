@@ -28,7 +28,7 @@ class AuthController extends Controller
     use ThrottlesLogins;
 
 // redireccion cuando se autentica el usuario
-protected $redirectPath = '/todo';
+protected $redirectPath = '/';
 // redireccion cuando no esta logueado el usuario
 protected $loginPath = '/auth/login';
 // redireccion cuando no esta logueado el usuario

@@ -36,4 +36,16 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function collaboratingTodos()
+    {
+      return $this->belongsToMany('App\Models\Todo');
+    }
+
+    public function ownerTodo()
+    {
+      return $this->hasMany('App\Models\Todo');
+    }
+
+
 }
