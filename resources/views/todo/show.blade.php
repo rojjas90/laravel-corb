@@ -2,6 +2,7 @@
 @section('content')
 <h1>Esta es la tarea: {{$todo->name}}</h1>
 <h3>Creado por: <small>{{$todo->user->name}}</small> </h3>
+<h3>Proyecto: <small>{{$todo->project->name}}</small> </h3>
 <br>
 <div class="bs-example" data-example-id="basic-forms">
            <div class="form-group">
@@ -34,10 +35,13 @@
             @endforeach
           </ul>
 
-          <button type="button" name="button">Editar</button>
+<a class="btn btn-info" href="/todo/{{$todo->id}}/edit">Editar</a>
+          {{-- <button type="button" name="button" class="btn btn-info">Editar</button> --}}
           @can('delete-todo',$todo)
-          <button type="button" name="button">Eliminar</button>
+          <button type="button" name="button" class="btn btn-danger">Eliminar</button>
         @endcan
+
+        <a class="btn btn-default" href="/todo">Volver</a>
 </div>
 
 @stop

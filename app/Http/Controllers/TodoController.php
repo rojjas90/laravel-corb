@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Todo;
+use App\Models\User;
 use App\Models\Project;
 use Auth;
 use App\Http\Requests\StoreTaskRequest;
@@ -29,7 +30,26 @@ class TodoController extends Controller
 
         // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
         // $list = DB::table('todo')->get();
-        $list = Todo::all()->load('user');
+
+        // obtener todas las tareas con Eloquent
+        $list = Todo::all()->load('user','collaborators'); //llama a las relaciones
+        // $list = Todo::all()->load('user','collaborators','projects'); //llama a las relaciones
+//
+// foreach ($$list as $todo) {
+//   if ($todo->user_id == Auth::user()->id || in_array(Auth::user()->id,$list->collaborators)) {
+//     $todo['owner'] = true;
+//   }
+// }
+
+foreach ($list as $todo) {
+  $todo->owner = false;
+  if ($todo->user_id == Auth::user()->id) {
+    $todo->owner = true;
+  }
+}
+
+// dd($list);
+
         // return $list;
           // return view('welcome');
           return view('todo.index',compact('list'));
@@ -45,11 +65,12 @@ class TodoController extends Controller
       // $collaborators = Todo::all();
 
       $projects = Project::all();
+      $users = User::all();
 
 // $todo->load('user','collaborators');
 
 // return $projects;
-        return view('todo.create',compact('projects'));
+        return view('todo.create',compact('projects','users'));
     }
 
     /**
@@ -90,23 +111,32 @@ class TodoController extends Controller
 //     ],$messages);
 
 
-
 $data = $request->all();
+
+// dd($data);
+
+
 // $data['user_id'] =Auth::user()->id;
 // return $data;
 
 //asignando el creador pero como parte de la relacion
 $todo = Todo::create($data);
 
-//attach guarda los valores en las relaciones (tablas intermedias)
 
-//asignando al creador como colaborador
-$todo->user()->attach(Auth::user()->id);
+/***************************************/
+// //attach guarda los valores en las relaciones (tablas intermedias)
+//
+// //asignando al creador como colaborador
+// $todo->user()->attach(Auth::user()->id);
+//
+// $todo->collaborators()->attach(Auth::user()->id,['assigned_at'=>'2016-11-16','allow'=>2]);
+// // o
+// //guarda la relacion
+// $todo->collaborators()->saveMany(Auth::user());
 
-$todo->collaborators()->attach(Auth::user()->id,['assigned_at'=>'2016-11-16','allow'=>2]);
-// o
-//guarda la relacion
-$todo->collaborators()->saveMany(Auth::user());
+/***************************************/
+
+$todo->collaborators()->attach($data['collaborators']);
 
 // //asignando a un grupo de colaboradores
 // $todo->collaborators()->attach($request->collaborators);
@@ -210,7 +240,10 @@ session()->flash('flash_type','info');
         if (Auth::user()->cannot('delete-todo',$todo)) {
           session()->flash('flash_msg','Denegado');
           session()->flash('flash_type','danger');
-          return back();
+          // return back();
+          // o
+          //mada vista de error que se encuentra en la carpeta view/errors
+          Abort(403,'No permitido');
         }
 
         $todo->delete();

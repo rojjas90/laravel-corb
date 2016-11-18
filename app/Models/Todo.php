@@ -11,6 +11,7 @@ class Todo extends Model
 protected $fillable = ['description','name','color','priority','user_id','project_id'];
 
 public function user()
+// public function creator()
 {
   return $this->belongsTo('App\Models\User');
 }

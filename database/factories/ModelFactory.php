@@ -25,3 +25,15 @@ $factory->define(App\Models\Project::class, function (Faker\Generator $faker) {
         'name' => $faker->company
     ];
 });
+
+
+$factory->define(App\Models\Todo::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'description' => $faker->paragraph,
+        'color' => '#000',
+        'priority' => $faker->numberBetween($min = 1, $max = 5), // 8567
+        // 'project_id' => $faker->numberBetween($min = 1, $max = 5), // 8567
+        // 'user_id' => Auth::user()->id
+    ];
+});

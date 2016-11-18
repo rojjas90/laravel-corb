@@ -18,7 +18,13 @@
         <ul class="list-group">
 
           @foreach ($list as $item)
-              <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} -- {{$item->user->name}} </li>
+@if ($item->owner)
+    <span class="glyphicon glyphicon-user"></span>
+@endif
+<span>Creado por: {{$item->user->name}}</span>
+
+              <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} -- {{$item->user->name}} -- {{$item->created_at->diffForHumans()}}</li>
+              <a class="btn btn-success" href="/todo/{{$item->id}}">Ver</a>
               <form class="" action="/todo/{{$item->id}}" method="post">
                 {{method_field('DELETE')}}
                 {{csrf_field()}}

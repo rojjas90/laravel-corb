@@ -25,7 +25,8 @@
                       <input type="text" class="form-control" id="" placeholder="project" value="{{$todo->priority}}">
               </div>
 
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-info">Submit</button>
         </form>
+        <a class="btn btn-default" href="/todo/{{$todo->id}}">Volver</a>
     </div>
 @stop

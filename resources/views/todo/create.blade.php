@@ -35,7 +35,38 @@
                       <label for="">Select a project</label>
                       <select class="form-control" name="project_id" id="id">
                           @foreach($projects as $project)
-                            <option value="{{$project->id}}">{{$project->name}}</option>
+                            <option value="{{$project->id}}"
+                              @if (old('project_id') == $project->id)
+                                selected="selected"
+                              @endif
+                              >{{$project->name}}</option>
+                          @endforeach
+                      </select>
+              </div>
+              <div class="form-group">
+                      <label for="">Select a user</label>
+                      {{-- @foreach($users as $user)
+                        <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="collaborators[]" value="{{$user->id}}"> {{$user->name}}
+                              </label>
+                        </div>
+                      @endforeach --}}
+
+{{-- {{dd(old('collaborators'))}} --}}
+
+                      <select class="form-control" name="collaborators[]" multiple size="5">
+                          @foreach($users as $user)
+                            <option value="{{$user->id}}"
+                              @if (!is_null(old('collaborators')))
+                                @if (in_array($user->id,old('collaborators')))
+                                  selected="selected"
+                                @endif
+                              @endif
+
+{{-- {{collect(old('collaborators'))->contains($user->id) ? "selected" : ""}} --}}
+
+                              >{{$user->name}}</option>
                           @endforeach
                       </select>
               </div>
