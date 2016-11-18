@@ -33,6 +33,11 @@
               </li>
             @endforeach
           </ul>
+
+          <button type="button" name="button">Editar</button>
+          @can('delete-todo',$todo)
+          <button type="button" name="button">Eliminar</button>
+        @endcan
 </div>
 
 @stop
