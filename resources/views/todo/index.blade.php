@@ -22,7 +22,7 @@
               <form class="" action="/todo/{{$item->id}}" method="post">
                 {{method_field('DELETE')}}
                 {{csrf_field()}}
-                <button type="submit" name="button">Eliminar</button>
+                <button type="submit" name="button" class="btn btn-info">Eliminar</button>
               </form>
           @endforeach
 

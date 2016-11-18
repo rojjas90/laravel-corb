@@ -195,13 +195,22 @@ session()->flash('flash_type','info');
     public function destroy($todo)
     {
 
-      // if (Gate::denies('delete-todo', Auth::user(),$todo)) {
-      if (Gate::denies('delete-todo', $todo)) {
-            // abort(403);
-            // o
-            session()->flash('flash_msg','Denegado');
-            session()->flash('flash_type','danger');
-            return back();
+      // // valida si se puede elimiar
+      // if (Gate::denies('delete-todo', $todo)) {
+      //       // abort(403);
+      //       // o
+      //       session()->flash('flash_msg','Denegado');
+      //       session()->flash('flash_type','danger');
+      //       return back();
+      //   }
+
+        // o
+
+// dd(session());
+        if (Auth::user()->cannot('delete-todo',$todo)) {
+          session()->flash('flash_msg','Denegado');
+          session()->flash('flash_type','danger');
+          return back();
         }
 
         $todo->delete();

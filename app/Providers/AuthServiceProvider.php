@@ -26,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
+        // se crea  la regla para la eliminacion de tareas de modo que solo se podra si el usuario es el dueño de la tarea y la prioridad es diferente de cero
         $gate->define('delete-todo', function ($user, $todo) {
             // return ($user->id === $todo->user_id && $todo->status === true);
             return ($user->id === $todo->user_id && $todo->priority !== 0);
