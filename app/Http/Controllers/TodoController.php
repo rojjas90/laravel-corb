@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Gate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -98,7 +98,7 @@ $data = $request->all();
 //asignando el creador pero como parte de la relacion
 $todo = Todo::create($data);
 
-//attach guarda los valores en las relaciones (tablas intermedias) 
+//attach guarda los valores en las relaciones (tablas intermedias)
 
 //asignando al creador como colaborador
 $todo->user()->attach(Auth::user()->id);
@@ -195,9 +195,19 @@ session()->flash('flash_type','info');
     public function destroy($todo)
     {
 
-Todo::destroy($todo);
+      // if (Gate::denies('delete-todo', Auth::user(),$todo)) {
+      if (Gate::denies('delete-todo', $todo)) {
+            // abort(403);
+            // o
+            session()->flash('flash_msg','Denegado');
+            session()->flash('flash_type','danger');
+            return back();
+        }
+
+        $todo->delete();
 
       // se redifije a la lista de todo's
-              return redirect('todo');
+              // return redirect('todo');
+              return back();
     }
 }

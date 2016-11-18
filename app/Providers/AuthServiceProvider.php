@@ -26,6 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        $gate->define('delete-todo', function ($user, $todo) {
+            // return ($user->id === $todo->user_id && $todo->status === true);
+            return ($user->id === $todo->user_id && $todo->priority !== 0);
+        });
     }
 }
