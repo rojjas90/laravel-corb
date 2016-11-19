@@ -38,8 +38,12 @@ class TodoController extends Controller
         // se esta agregando el scope a la consulta
         $list = Todo::priority('asc')
         ->sinceDays(5)
-        ->get()
-        ->load('user','collaborators'); //llama a las relaciones
+        // se agrega paginado
+        ->paginate(10);
+        // se elimina get para paginar
+        // ->get()
+
+        $list->load('user','collaborators'); //llama a las relaciones
 
         // $list = Todo::all()->load('user','collaborators','projects'); //llama a las relaciones
 //
@@ -189,8 +193,8 @@ session()->flash('flash_type','info');
       $todo->load('user','collaborators');
 // return $todo;
 
-// ejemplo de cast
-dd($todo->priority);
+// // ejemplo de cast
+// dd($todo->priority);
 
         return view('todo.show',compact('todo'));
     }

@@ -11,10 +11,10 @@ class Todo extends Model
  //Indica al orm con que campos hacer el match al recuperar los datos del $request
 protected $fillable = ['description','name','color','priority','user_id','project_id'];
 
-protected $casts = [
-  // 'nameProperty' => 'dataType'
-  'priority' => 'double'
-];
+// protected $casts = [
+//   // 'nameProperty' => 'dataType'
+//   'priority' => 'double'
+// ];
 
 public function user()
 // public function creator()
@@ -49,17 +49,17 @@ public function scopeSinceDays($query, $days)
 
 /**************/
 // Accesors
-// public function getPriorityAttribute($priority)
-// {
-//   switch ($priority) {
-//     case "0": return 'Undefined';
-//     case "1": return 'Very low';
-//     case "2": return 'Low';
-//     case "3": return 'Normal';
-//     case "4": return 'High';
-//     case "5": return 'Very high';
-//   }
-// }
+public function getPriorityAttribute($priority)
+{
+  switch ($priority) {
+    case "0": return 'Undefined';
+    case "1": return 'Very low';
+    case "2": return 'Low';
+    case "3": return 'Normal';
+    case "4": return 'High';
+    case "5": return 'Very high';
+  }
+}
 
 /**************/
 // Mutators
