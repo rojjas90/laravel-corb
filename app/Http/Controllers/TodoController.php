@@ -31,8 +31,16 @@ class TodoController extends Controller
         // // $list = ['Correr por la tarde','Leer en sabado','Jugar match horda 3.0','Comer hasta reventar','Dormir lo mas que se pueda'];
         // $list = DB::table('todo')->get();
 
-        // obtener todas las tareas con Eloquent
-        $list = Todo::all()->load('user','collaborators'); //llama a las relaciones
+
+                // // obtener todas las tareas con Eloquent
+                // $list = Todo::all()->load('user','collaborators'); //llama a las relaciones
+
+        // se esta agregando el scope a la consulta
+        $list = Todo::priority('asc')
+        ->sinceDays(5)
+        ->get()
+        ->load('user','collaborators'); //llama a las relaciones
+
         // $list = Todo::all()->load('user','collaborators','projects'); //llama a las relaciones
 //
 // foreach ($$list as $todo) {
@@ -225,26 +233,26 @@ session()->flash('flash_type','info');
     public function destroy($todo)
     {
 
-      // // valida si se puede elimiar
-      // if (Gate::denies('delete-todo', $todo)) {
-      //       // abort(403);
-      //       // o
-      //       session()->flash('flash_msg','Denegado');
-      //       session()->flash('flash_type','danger');
-      //       return back();
-      //   }
+      // valida si se puede elimiar
+      if (Gate::denies('delete-todo', $todo)) {
+            // abort(403);
+            // o
+            session()->flash('flash_msg','Denegado');
+            session()->flash('flash_type','danger');
+            return back();
+        }
 
         // o
 
-// dd(session());
-        if (Auth::user()->cannot('delete-todo',$todo)) {
-          session()->flash('flash_msg','Denegado');
-          session()->flash('flash_type','danger');
-          // return back();
-          // o
-          //mada vista de error que se encuentra en la carpeta view/errors
-          Abort(403,'No permitido');
-        }
+// // dd(session());
+//         if (Auth::user()->cannot('delete-todo',$todo)) {
+//           session()->flash('flash_msg','Denegado');
+//           session()->flash('flash_type','danger');
+//           // return back();
+//           // o
+//           //mada vista de error que se encuentra en la carpeta view/errors
+//           Abort(403,'No permitido');
+//         }
 
         $todo->delete();
 

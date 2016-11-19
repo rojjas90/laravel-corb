@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
@@ -29,6 +30,13 @@ public function collaborators()
 public function scopePriority($query, $args)
 {
   return $query->orderBy('priority',$args);
+}
+
+public function scopeSinceDays($query, $days)
+{
+  $dt = new Carbon();
+  $date = $dt->subDays($days);
+  return $query->where('created_at','>=',$date);
 }
 
 }

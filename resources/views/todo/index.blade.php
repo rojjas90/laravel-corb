@@ -23,7 +23,7 @@
 @endif
 <span>Creado por: {{$item->user->name}}</span>
 
-              <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} -- {{$item->user->name}} -- {{$item->created_at->diffForHumans()}}</li>
+              <li class="list-group-item"> <span class="badge">14</span> {{$item->name}} -- {{$item->user->name}} -- {{$item->created_at->diffForHumans()}} | priority: {{$item->priority}}</li>
               <a class="btn btn-success" href="/todo/{{$item->id}}">Ver</a>
               <form class="" action="/todo/{{$item->id}}" method="post">
                 {{method_field('DELETE')}}
