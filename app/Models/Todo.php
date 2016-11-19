@@ -55,4 +55,13 @@ public function getPriorityAttribute($priority)
     case "5": return 'Very high';
   }
 }
+
+/**************/
+// Mutators
+public function setColorAttribute($value)
+{
+  $this->attributes['color'] = strtoupper($value);
+}
+
+
 }

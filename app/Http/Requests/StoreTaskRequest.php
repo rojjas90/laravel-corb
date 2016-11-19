@@ -25,8 +25,10 @@ class StoreTaskRequest extends Request
     {
         return [
           'name' => 'required|alpha_num|max:10|unique:todos', // por default toma el del name si no se defina el campo de la tabla
-          'priority' => 'required'//,
-          // 'color' => 'regex:/#[A-F0-9]{6}/'
+          'priority' => 'required'
+          //,
+          // 'color' => 'regex:/#[a-f0-9]{6}/'
+          // 'color' => 'regex:/[a-f0-9]{6}/'
         ];
     }
 
@@ -34,8 +36,8 @@ class StoreTaskRequest extends Request
     {
       return [
         'name.required' => 'El campo name es necesario',
-        'priority.required' => 'El campo priority es necesario'//,
-        // 'color.required' => 'El color en hexadecimal'
+        'priority.required' => 'El campo priority es necesario',
+        'color.required' => 'El color en hexadecimal'
       ];
     }
 }

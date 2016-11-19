@@ -124,7 +124,7 @@ $data = $request->all();
 // dd($data);
 
 
-// $data['user_id'] =Auth::user()->id;
+$data['user_id'] =Auth::user()->id;
 // return $data;
 
 //asignando el creador pero como parte de la relacion
@@ -143,8 +143,10 @@ $todo = Todo::create($data);
 // $todo->collaborators()->saveMany(Auth::user());
 
 /***************************************/
+if (isset($data['collaborators'])) {
+  $todo->collaborators()->attach($data['collaborators']);
+}
 
-$todo->collaborators()->attach($data['collaborators']);
 
 // //asignando a un grupo de colaboradores
 // $todo->collaborators()->attach($request->collaborators);
