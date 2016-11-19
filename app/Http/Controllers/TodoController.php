@@ -189,6 +189,9 @@ session()->flash('flash_type','info');
       $todo->load('user','collaborators');
 // return $todo;
 
+// ejemplo de cast
+dd($todo->priority);
+
         return view('todo.show',compact('todo'));
     }
 
