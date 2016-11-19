@@ -27,6 +27,9 @@ public function collaborators()
   return $this->belongsToMany('App\Models\User')->withPivot('assigned_at','allow');
 }
 
+
+/**************/
+// SCOPES
 public function scopePriority($query, $args)
 {
   return $query->orderBy('priority',$args);
@@ -39,4 +42,17 @@ public function scopeSinceDays($query, $days)
   return $query->where('created_at','>=',$date);
 }
 
+/**************/
+// Accesors
+public function getPriorityAttribute($priority)
+{
+  switch ($priority) {
+    case "0": return 'Undefined';
+    case "1": return 'Very low';
+    case "2": return 'Low';
+    case "3": return 'Normal';
+    case "4": return 'High';
+    case "5": return 'Very high';
+  }
+}
 }
