@@ -19,4 +19,5 @@
     @endforeach
 </ul>
 
+<a href="/todo" class="btn btn-info">Ir a todos</a>
 @stop

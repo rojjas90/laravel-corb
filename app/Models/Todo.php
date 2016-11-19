@@ -25,4 +25,10 @@ public function collaborators()
 {
   return $this->belongsToMany('App\Models\User')->withPivot('assigned_at','allow');
 }
+
+public function scopePriority($query, $args)
+{
+  return $query->orderBy('priority',$args);
+}
+
 }
